@@ -1,7 +1,7 @@
 <div>
   <ul *ngFor="let data of json1.children">
     <li (click) ="spreadChildren()" >
-      <b><i class="fas fa-folder"></i>{{data.name}}</b>
+      <b><i class="fas fa-folder"></i> {{data.name}}</b>
       <ul *ngFor="let rel of json1.termsrelation">
         <!-- {{rel.rel}} -->
         <ng-container *ngIf = "rel.rel == data.name">
@@ -10,11 +10,16 @@
               {{relItems.name}}
             <ng-container *ngIf = "relItems.name == json2.name">
               <ul *ngFor = "let trans of json2.termsrelation">
-                <li>{{trans.rel}}</li>
+                <li><i class="fas fa-folder"></i> {{trans.rel}}
+                  <ul *ngFor="let inner of trans.terms">
+                    <li>
+                      {{inner.name}}
+                    </li>
+                  </ul>
+                </li>
               </ul>
             </ng-container>
             </li>
-            
           </ul>
         </ng-container>
     </ul>
