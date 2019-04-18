@@ -19,7 +19,9 @@ export class AppComponent implements OnInit {
   }
 
   myfunc(e) {
-    console.log('evenbt : ', e);
+    if (this.toShow == e) 
+    this.toShow = ''
+  else
     this.toShow = e
   }
 }

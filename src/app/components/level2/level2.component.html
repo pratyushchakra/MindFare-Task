@@ -1,9 +1,25 @@
 <ng-container *ngIf="json2.name == relItems.name && flag">
-<!-- </ng-container></ng-container> -->
-    <ul *ngFor="let trans of json2.termsrelation">
-      <li>
-       <i (click)="showInner(trans.rel)" class="fas fa-folder"></i> {{trans.rel}}
-          <app-level3 [trans] ="trans" [flag2]="innerFlag"></app-level3> 
-      </li>
-    </ul>
-  </ng-container>
+  <!-- </ng-container></ng-container> -->
+  <ul *ngFor="let trans of json2.termsrelation">
+    <li>
+      <div class="flex">
+        <div>
+          <div class="flex" *ngIf="trans.rel != innerFlag;else elseBlock">
+            <i class="far fa-plus-square" (click)="showInner(trans.rel)"></i>
+            <i (click)="showInner(trans.rel)" class="fas fa-folder"></i>
+          </div>
+          <ng-template #elseBlock>
+            <div class="flex">
+              <i class="far fa-minus-square" (click)="showInner(trans.rel)"></i>
+              <i class="fas fa-folder-open" (click)="showInner(trans.rel)"></i>
+            </div>
+          </ng-template>
+        </div>
+        <div>
+          {{trans.rel}}
+        </div>
+      </div>
+      <app-level3 [trans]="trans" [flag2]="innerFlag"></app-level3>
+    </li>
+  </ul>
+</ng-container>

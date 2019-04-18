@@ -17,10 +17,13 @@ export class Level2Component implements OnInit {
   json2: any = json2
   public innerFlag = ''
   ngOnInit() {
-    console.log('level2',this.relItems, this.flag );
+    console.log('level2', this.relItems, this.flag);
   }
   showInner(e) {
     console.log('showInner', e);
-    this.innerFlag = e
+    if (this.innerFlag == e) 
+      this.innerFlag = ''
+    else
+      this.innerFlag = e
   }
 }

@@ -4,9 +4,25 @@
   <ng-container *ngIf="rel.rel == children.name && flag == children.name">
     <ul *ngFor="let relItems of rel.terms">
       <li>
-        <i (click)="spreadJson2(relItems.name)" class="fas fa-folder">
-        </i>{{relItems.name}}
-        <app-level2 [relItems] ="relItems" [flag]="newFlag"></app-level2>
+        <div class="flex">
+          <div>
+            <div class="flex" *ngIf="!newFlag;else elseBlock">
+              <i class="far fa-plus-square" (click)="spreadJson2(relItems.name)"></i>
+              <i (click)="spreadJson2(relItems.name)" class="fas fa-folder"></i>
+            </div>
+            <ng-template #elseBlock>
+              <div class="flex">
+                <i class="far fa-minus-square" (click)="spreadJson2(relItems.name)"></i>
+                <i (click)="spreadJson2(relItems.name)" class="fas fa-folder-open"></i>
+              </div>
+            </ng-template>
+          </div>
+          <div>
+            {{relItems.name}}
+          </div>
+        </div>
+
+        <app-level2 [relItems]="relItems" [flag]="newFlag"></app-level2>
       </li>
     </ul>
   </ng-container>
