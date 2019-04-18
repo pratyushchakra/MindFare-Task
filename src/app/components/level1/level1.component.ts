@@ -10,15 +10,12 @@ import json2 from '../../../../JSON/level2'
 export class Level1Component implements OnInit {
 
   constructor() {
-    // this.spreadJson2(e)
   }
 
   @Input()
   children: any;
   @Input()
   flag: Boolean;
-
-  @Output() spreadChange = new EventEmitter();
 
   json1: any = json1
   spread: Boolean = false
