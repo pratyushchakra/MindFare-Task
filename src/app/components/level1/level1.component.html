@@ -1,0 +1,14 @@
+<!-- <ng-container *ngIf="spread"> -->
+<!-- <b><i class="fas fa-folder"></i> {{children.name}}</b> -->
+<ul *ngFor="let rel of json1.termsrelation">
+  <ng-container *ngIf="rel.rel == children.name && flag == children.name">
+    <ul *ngFor="let relItems of rel.terms">
+      <li>
+        <i (click)="spreadJson2(relItems.name)" class="fas fa-folder">
+        </i>{{relItems.name}}
+        <app-level2 [relItems] ="relItems" [flag]="newFlag"></app-level2>
+      </li>
+    </ul>
+  </ng-container>
+</ul>
+<!-- </ng-container> -->

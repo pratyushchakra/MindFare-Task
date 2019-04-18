@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Level1Component } from "../app/components/level1/level1.component";
 import json1 from '../../JSON/level1'
 import json2 from '../../JSON/level2'
 @Component({
@@ -11,14 +12,14 @@ export class AppComponent implements OnInit {
   public json1: any = json1
   public json2: any = json2
   json1keys = Object.keys(json1);
-  // Mapjson1 = new Map(this.json1)
-  // Mapjson2 = new Map(this.json2)
-
-  showChildrenContent: Boolean = false
+  public spread: Boolean = false
+  toShow = ''
   ngOnInit() {
-    console.log('JSON1: ', json1.children);
+  
   }
-  spreadChildren() {
-    this.showChildrenContent = true
+
+  myfunc(e) {
+    console.log('evenbt : ', e);
+    this.toShow = e
   }
 }

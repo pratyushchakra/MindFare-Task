@@ -1,28 +1,40 @@
 <div>
   <ul *ngFor="let data of json1.children">
-    <li (click) ="spreadChildren()" >
-      <b><i class="fas fa-folder"></i> {{data.name}}</b>
-      <ul *ngFor="let rel of json1.termsrelation">
-        <!-- {{rel.rel}} -->
-        <ng-container *ngIf = "rel.rel == data.name">
-          <ul *ngFor="let relItems of rel.terms">
-            <li><i class="fas fa-folder"></i>
-              {{relItems.name}}
-            <ng-container *ngIf = "relItems.name == json2.name">
-              <ul *ngFor = "let trans of json2.termsrelation">
-                <li><i class="fas fa-folder"></i> {{trans.rel}}
-                  <ul *ngFor="let inner of trans.terms">
-                    <li>
-                      {{inner.name}}
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-            </ng-container>
-            </li>
-          </ul>
-        </ng-container>
-    </ul>
+    <li>
+        <b>
+            <div *ngIf="toShow != data.name;else elseBlock">
+              <i class="fas fa-folder" (click)= "myfunc(data.name)" ></i>
+            </div>    
+            <ng-template #elseBlock>
+              <i class="far fa-folder-open" (click)= "myfunc(data.name)"></i>
+            </ng-template>
+          {{data.name}}</b>
+          <app-level1 [children] = "data" [flag] = "toShow"></app-level1>
     </li>
   </ul>
 </div>
+
+<!-- 
+<li (click) ="spreadChildren()" >
+    <b><i class="fas fa-folder"></i> {{data.name}}</b>
+    <ul *ngFor="let rel of json1.termsrelation">
+      <ng-container *ngIf = "rel.rel == data.name">
+        <ul *ngFor="let relItems of rel.terms">
+          <li><i class="fas fa-folder"></i>
+            {{relItems.name}}
+          <ng-container *ngIf = "relItems.name == json2.name">
+            <ul *ngFor = "let trans of json2.termsrelation">
+              <li><i class="fas fa-folder"></i> {{trans.rel}}
+                <ul *ngFor="let inner of trans.terms">
+                  <li>
+                    {{inner.name}}
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </ng-container>
+          </li>
+        </ul>
+      </ng-container>
+  </ul>
+  </li> -->
