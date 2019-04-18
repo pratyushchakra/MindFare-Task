@@ -1,7 +1,11 @@
 <ng-container *ngIf="trans.rel == flag2">
   <ul *ngFor="let inner of trans.terms">
     <li>
-      {{inner.name}}
+      <div class="flex">
+        <i class="far fa-plus-square"></i>
+        <i class="fas fa-folder"></i>
+        {{inner.name}}
+      </div>
     </li>
   </ul>
 </ng-container>
